@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>USERS</title>
+    <!--   Bootwatch Cyborg Theme-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cyborg/bootstrap.min.css"
+          integrity="sha384-nEnU7Ae+3lD52AK+RGNzgieBWMnEfgTbRHIwEvp1XXPdqdO6uLTd/NwXbzboqjc2" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container-fluid text-center flex-box mt-5">
+    <h1>Manage Users</h1>
+    <a class="h3 text-primary" th:href="@{/users/new}"><i class="fa-solid fa-user px-2 text-white"></i>Add User</a>
+<!--    Successful notification-->
+    <div th:if="${message}" class="alert alert-secondary text-center p-3 mt-2">
+        [[${message}]]
+    </div>
+<!--    Table-->
+    <table class="table table-bordered mt-4">
+        <thead class="thead-light">
+    <!--        Fields -->
+        <tr>
+            <th class="h5">ID</th>
+            <th class="h5">First Name</th>
+            <th class="h5">Last Name</th>
+            <th class="h5">Email</th>
+            <th class="h5">Password</th>
+            <th class="text-primary h5">Action</th>
+
+        </tr>
+        </thead>
+        <tbody class="bg-light">
+        <th:block th:each="user:${listUsers}">
+            <tr>
+                <td>[[${user.id}]]</td>
+                <td>[[${user.firstName}]]</td>
+                <td>[[${user.lastName}]]</td>
+                <td>[[${user.email}]]</td>
+                <td>[[${user.password}]]</td>
+                <td>
+                    <a class="h5" th:href="@{'/users/edit/' + ${user.id}}">Edit</a>
+                    <a class="h5 ml-1" th:href="@{'/users/delete/' + ${user.id}}">Delete</a>
+                </td>
+            </tr>
+
+        </th:block>
+        </tbody>
+    </table>
+</div>
+
+<!--Kit from FontAwesome -->
+<script src="https://kit.fontawesome.com/e7874cc5eb.js" crossorigin="anonymous"></script>
+</body>
+</html>

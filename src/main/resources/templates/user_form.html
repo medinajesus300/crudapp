@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <!--   Bootwatch Cyborg Theme-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cyborg/bootstrap.min.css"
+          integrity="sha384-nEnU7Ae+3lD52AK+RGNzgieBWMnEfgTbRHIwEvp1XXPdqdO6uLTd/NwXbzboqjc2" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container d-flex justify-content-center">
+
+    <div class="card bg-light mt-5" style="max-width: 500px">
+        <article class="card-body mx-auto">
+            <h4 class="card-title mt-1 py-1 text-center">[[${pageTitle}]]</h4>
+            <form th:action="@{/users/save}" method="post" th:object="${user}">
+                <input type="hidden" th:field="*{id}">
+                <!--First Name Label with Input-->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input name="" class="form-control" placeholder="First Name" type="text" th:field="*{firstName}" required minlength="2" maxlength="45">
+                </div>
+                <!--Last Name Label with Input-->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input name="" class="form-control" placeholder="Last Name" type="text" th:field="*{lastName}" required minlength="2" maxlength="45">
+                </div>
+                <!-- Email Address Label with Input-->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input name="" class="form-control" placeholder="Email address" type="email" th:field="*{email}" required minlength="8" maxlength="45">
+                </div>
+                <!--Password Label with Input-->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input class="form-control" placeholder="Create password" type="password" th:field="*{password}" required minlength="5" maxlength="45">
+                </div>
+                <!--Add User Button-->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Add User</button>
+                </div>
+            </form>
+        </article>
+    </div>
+
+</div>
+<script src="https://kit.fontawesome.com/e7874cc5eb.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
